@@ -16,19 +16,5 @@ class HomeController extends Controller
         return view('about');
     }
 
-    public function blog($id, $author = 'author by default')
-    {
-        // return $id . " author is : $author";
-        $posts = [
-
-            1 => ['title' => '<a>Learn Laravel</a>'],
-            2 => ['title' => 'learn Angular']
-        ];
-
-        return view('posts.show', [
-
-            'data' => $posts[$id],
-            'author' => $author
-        ]);
-    }
+   
 }
