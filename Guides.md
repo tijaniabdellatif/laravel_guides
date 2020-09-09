@@ -138,3 +138,6 @@ lister les differentes routes :
 => php artisan route:list
 Generer un controlleur avec les methodes Crud + retrieve object 
 => php artisan make:controller PostController --resource
+
+## forms : 
+
