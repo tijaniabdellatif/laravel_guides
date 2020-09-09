@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\App;
 
 class PostController extends Controller
@@ -42,10 +43,18 @@ class PostController extends Controller
         //recupere la data 
         // dd('OK');
         // dd($request->all());
-        $title = $request->input('title');
-        $content = $request->input('content');
+        $post = new Post();
+        $post->title = $request->input('title');
+        $post->content = $request->input('content');
+        $post->slug = Str::slug($post->title , '-');
+        $post->active = false;
+        $post->save();
+        $request->session()->flash('status','post was created');
+        return redirect()->route('posts.index');
+        // return redirect()->route('posts.show',['post' => $post->id]);
+        // $content = $request->input('content');
 
-        dd($title , 'content : ',$content);
+        // dd($title , 'content : ',$content);
     }
 
     /**
