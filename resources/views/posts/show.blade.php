@@ -1,8 +1,21 @@
 @extends('layout')
 
 @section('content')
-  <h1>POST Page</h1>
+    
+<h1>{{$post->title}}</h1>
+<p>{{$post->content}}</p>
+<em>{{$post->created_at}}</em>
+
+<p>
   
-<h2>{!! $data['title'] !!}</h2> by <p>{{ $author}}</p>
-      
+  Status : 
+  
+   @if($post->active)
+     Enabled
+     @else
+     Disabled
+     @endif
+
+</p>
+
 @endsection

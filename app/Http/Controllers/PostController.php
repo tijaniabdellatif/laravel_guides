@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
@@ -14,8 +15,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
-         dd(\App\Post::all());
+        //debug
+        //  dd(\App\Post::all());
+         
+         return view('posts.index',['posts'=> Post::all()]);
     }
 
     /**
@@ -47,8 +50,10 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
-        dd(\App\Post::find($id));
+        //debug
+        // dd(\App\Post::find($id));
+        return view('posts.show', ['post' => Post::find($id)]);
+        
     }
 
     /**
