@@ -14,6 +14,7 @@
         </a></h2>
          <p>{{$post->content}}</p>
          <em>{{$post->created_at->diffForHumans()}}</em>
+      <a href="{{route('posts.edit',['post' => $post->id])}}">Edit</a>
         </li> 
           @empty
           <p>No Post</p>

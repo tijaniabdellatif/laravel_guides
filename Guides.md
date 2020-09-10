@@ -142,7 +142,13 @@ Generer un controlleur avec les methodes Crud + retrieve object
 ## forms : 
 
 
-Generate a request folder with nae StorePost 
+# Generate a request folder with nae StorePost 
  
  ##php artisan make:request StorePost
+
+  # Cleaning forms helpers :
+
+
+  # Edit and update :
+  
 
