@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePost;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -38,29 +39,25 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePost $request)
     {
         //recupere la data 
         // dd('OK');
         // dd($request->all());
 
 
-       $validated =  $request->validate([
-            'title' => 'bail|required|min:4||max:100',
-            'content' => 'required'
-        ]);
+    //    $validated =  $request->validate([
+            
+    //     ]);
 
-        $post = new Post();
-        $post->title = $request->input('title');
-        $post->content = $request->input('content');
-        $post->slug = Str::slug($post->title , '-');
-        $post->active = false;
-        $post->save();
+        $data = $request->only(['title', 'content']);
+        $data['slug'] = Str::slug($data['title'],'-');
+        $data['active'] = false;
+        $post = Post::create($data);
         $request->session()->flash('status','post was created');
         return redirect()->route('posts.index');
         // return redirect()->route('posts.show',['post' => $post->id]);
         // $content = $request->input('content');
-
         // dd($title , 'content : ',$content);
     }
 
