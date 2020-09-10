@@ -43,6 +43,13 @@ class PostController extends Controller
         //recupere la data 
         // dd('OK');
         // dd($request->all());
+
+
+       $validated =  $request->validate([
+            'title' => 'bail|required|min:4||max:100',
+            'content' => 'required'
+        ]);
+
         $post = new Post();
         $post->title = $request->input('title');
         $post->content = $request->input('content');
